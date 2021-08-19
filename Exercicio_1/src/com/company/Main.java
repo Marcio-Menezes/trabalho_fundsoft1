@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package veiculos;
+package com.company;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Marcio
- */
 public class Main {
     
     public static void novaBusca() {
@@ -22,6 +13,7 @@ public class Main {
         catalogo c = new catalogo();
         Scanner in = new Scanner(System.in);
         int menu = 0;
+        String modelo;
         System.out.println("Bem-vindo(a) à Loja de Carros, digite abaixo a opção desejada");
         while (menu == 0) {
 
@@ -83,7 +75,7 @@ public class Main {
                     break;
                 case 4:
                     System.out.println("Digite o modelo do veiculo");
-                    String modelo = in.nextLine();
+                    modelo = in.next();
                     c.buscaModelo(modelo);
                     novaBusca();
                     menu = in.nextInt();
