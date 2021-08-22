@@ -1,64 +1,106 @@
 package com.company;
+
 import java.util.Scanner;
 
 public class Main {
-
+    
+    public static void novaBusca() {
+        System.out.println("---------------------------------------------");
+        System.out.println("Deseja fazer uma nova busca? 1 = Sim, 2 = Não");
+    }
+    
     public static void main(String[] args) {
-        int opcao;
-        boolean repetir;
+        catalogo c = new catalogo();
         Scanner in = new Scanner(System.in);
+        int menu = 0;
+        String modelo;
+        System.out.println("Bem-vindo(a) à Loja de Carros, digite abaixo a opção desejada");
+        while (menu == 0) {
 
-        do
-        {
-            System.out.println("---------------------------------");
-            System.out.println(" SISTEMA DE CONSULTA DE VEÍCULOS ");
-            System.out.println("---------------------------------");
-
-            System.out.println("\nEscolha uma das opções abaixo: ");
-            System.out.println("(1) Consultar por placa");
-            System.out.println("(2) Consultar por marca");
-            System.out.println("(3) Consultar por ano");
-            System.out.println("(4) Consultar por tipo");
-            
-            opcao = in.nextInt();
-            repetir = false;
-
-            switch(opcao)
-            {
-                case 1: consultaPorPlaca();
-                        break;
-                case 2: consultaPorMarca();
-                        break;
-                case 3: consultaPorAno();
-                        break;
-                case 4: consultaPorTipo();
-                        break;
-                default: System.out.println("\nOpção inválida. Tente novamente usando algum dos números relacionados com opções do menu (1,2,3 ou 4).");
-                         repetir = true;
-                         break;
-            }
-        } while(repetir);
-
-        in.close();
-    }
-
-    public static void consultaPorPlaca()
-    {
-        // write your code here
-    }
-
-    public static void consultaPorMarca()
-    {
-        // write your code here
-    }
-
-    public static void consultaPorAno()
-    {
-        // write your code here
-    }
-
-    public static void consultaPorTipo()
-    {
-        // write your code here
+            System.out.println("1 - Apresentar todos os dados do inventário");
+            System.out.println("2 - Procurar dados de um produto por seu código");
+            System.out.println("3 - Apresentar valor total de todos os carros do catalogo");
+            System.out.println("4 - Buscar por Modelo");
+            System.out.println("5 - Encerrar o programa");
+            menu = in.nextInt();
+            int buscaCod;
+            novaBusca:
+            switch (menu) {
+                case 1:
+                    c.todosDados();
+                    novaBusca();
+                    menu = in.nextInt();
+                    switch (menu) {
+                        case 1:
+                            menu = 0;
+                            break novaBusca;
+                        case 2:
+                            System.out.println("Obrigado por utilizar o software, até breve");
+                            System.exit(0);
+                        default:
+                            break;
+                    }
+                    break;
+                case 2:
+                    System.out.println("Digite o código do veiculo");
+                    buscaCod = in.nextInt();
+                    c.buscaCodigo(buscaCod);
+                    novaBusca();
+                    menu = in.nextInt();
+                    switch (menu) {
+                        case 1:
+                            menu = 0;
+                            break novaBusca;
+                        case 2:
+                            System.out.println("Obrigado por utilizar o software, até breve");
+                            System.exit(0);
+                        default:
+                            break;
+                    }
+                    break;
+                case 3:
+                    c.valorTotal();
+                    novaBusca();
+                    menu = in.nextInt();
+                    switch (menu) {
+                        case 1:
+                            menu = 0;
+                            break novaBusca;
+                        case 2:
+                            System.out.println("Obrigado por utilizar o software, até breve");
+                            System.exit(0);
+                        default:
+                            break;
+                    }
+                    break;
+                case 4:
+                    System.out.println("Digite o modelo do veiculo");
+                    modelo = in.next();
+                    c.buscaModelo(modelo);
+                    novaBusca();
+                    menu = in.nextInt();
+                    switch (menu) {
+                        case 1:
+                            menu = 0;
+                            break novaBusca;
+                        case 2:
+                            System.out.println("Obrigado por utilizar o software, até breve");
+                            System.exit(0);
+                        default:
+                            break;
+                    }
+                    break;
+                case 5:
+                    System.out.println("Obrigado por utilizar o software, até breve");
+                    in.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opção invalida");
+                    menu = 0;
+                    System.out.println("--------------------------------------------");
+                    break;
+            }      
+        }
     }
 }
