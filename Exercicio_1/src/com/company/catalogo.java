@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author Marcio
+ * @author Marcio Fraga, Guilherme Manna, Lucas Camargo e Luca Oliveira
  */
 public class catalogo {
 
